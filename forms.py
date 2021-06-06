@@ -3,8 +3,9 @@ from wtforms import StringField, SubmitField
 from wtforms import validators
 from wtforms.fields.core import BooleanField
 from wtforms.fields.simple import PasswordField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
+from wtforms.validators import DataRequired, Length, EqualTo
 from wtforms.fields.html5 import EmailField
+import email_validator
 
 
 class RegistrationForm(FlaskForm):
@@ -12,15 +13,14 @@ class RegistrationForm(FlaskForm):
                         validators=[DataRequired(), 
                         Length(min=2, max=20)])
     email = EmailField('Email', 
-            validators=[ Email(), DataRequired()])
+            validators=[ email_validator.validate_email(), DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
 
 class LoginForm(FlaskForm):
-    class RegistrationForm(FlaskForm):
         email = StringField('Email', 
-                validators=[DataRequired(), Email()])
+                validators=[DataRequired(), email_validator()])
         password = PasswordField('Password', validators=[DataRequired()])
         remember = BooleanField('Remember Me')
         submit = SubmitField('Login')
