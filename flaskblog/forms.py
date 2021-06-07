@@ -5,7 +5,6 @@ from wtforms.fields.core import BooleanField
 from wtforms.fields.simple import PasswordField
 from wtforms.validators import DataRequired, Length, EqualTo
 from wtforms.fields.html5 import EmailField
-import email_validator
 
 
 class RegistrationForm(FlaskForm):
