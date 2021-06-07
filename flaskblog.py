@@ -1,14 +1,3 @@
-from datetime import datetime
-from enum import unique
-from flask import Flask, render_template, url_for, flash, redirect
-from forms import RegistrationForm, LoginForm 
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] ='568b6d775d0ed76dece65cf25387e0'
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
-
-db = SQLAlchemy(app)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
