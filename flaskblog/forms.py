@@ -39,13 +39,9 @@ class UpdateAccountForm(FlaskForm):
                                        Length(min=2, max=20)])
     email = EmailField('Email',
                        validators=[validators.email(), DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
-    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
 
-    submit = SubmitField('Sign Up')
-
-
+    submit = SubmitField('Update')
 
     def validate_username(self, username):
         # this is how we query data and raise validation error
